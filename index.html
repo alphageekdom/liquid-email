@@ -116,16 +116,6 @@
 
     <body id="body"
         style="Margin: 0 !important; padding: 0 !important; background-color: #FAFAFA; font-family: Arial, Helvetica, sans-serif; font-size: 18px; line-height: 1.2; color: #000000;">
-
-
-        <iframe
-            style="display: none !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important;"
-            name="_hjRemoteVarsFrame" title="_hjRemoteVarsFrame" tabindex="-1" aria-hidden="true"
-            id="_hjRemoteVarsFrame" src="assets/box-e031119f9e9e307a08fa610f85dbfb52.html"></iframe><iframe
-            id="_hjSafeContext_5918655" title="_hjSafeContext" tabindex="-1" aria-hidden="true" src="assets/a.html"
-            style="display: none !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important;"></iframe>
-
-
         <script type="text/template">
 
 <!-- START OF PREVIEW TEXT -->
@@ -434,72 +424,88 @@
                                 </tr>
                                 <!-- END OF YOUR ITEMS TITLE -->
 
-                                <!-- START OF YOUR ITEMS DETAILS -->
-                                <tr>
-                                    <td style="padding-top: 10px;" align="center">
-                                        <table class="responsive-table" role="presentation" width="540" cellspacing="0"
-                                            cellpadding="0" border="0" align="center">
-                                            <tbody>
-                                                <tr>
-                                                    <td class="dw db" width="130">
-                                                        <table role="presentation" width="130" cellspacing="0"
-                                                            cellpadding="0" border="0" align="center">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td class="dw db" align="left">
-                                                                        <img class="image"
-                                                                            src="assets/flannel-shirt.jpeg"
-                                                                            alt="Flannel Shirt"
-                                                                            style="display: block; border: none;"
-                                                                            width="130">
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </td>
+                                <ul>
+                                    {% assign items = order.items_ids | split: ", " %}
+                                    {% assign items_titles = order.items_titles | split: ", " %}
+                                    {% assign items_colors = order.items_colors | split: ", " %}
+                                    {% assign items_styles = order.items_styles | split: ", " %}
+                                    {% assign items_page = order.items_page | split: ", " %}
+                                    {% assign items_images = order.items_images | split: ", " %}
+                                    {% assign items_quantities = order.items_quantities | split: ", " %}
+                                    {% assign items_prices = order.items_prices | split: ", " %}
 
-                                                    <td class="dw db" width="20" height="20">
-                                                        &nbsp;
-                                                    </td>
+                                    {%- for item in items -%}
+                                    <!-- START OF YOUR ITEMS DETAILS -->
+                                    <tr>
+                                        <td style="padding-top: 10px;" align="center">
+                                            <table class="responsive-table" role="presentation" width="540"
+                                                cellspacing="0" cellpadding="0" border="0" align="center">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="dw db" width="130">
+                                                            <table role="presentation" width="130" cellspacing="0"
+                                                                cellpadding="0" border="0" align="center">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td class="dw db" align="left">
+                                                                            <img class="image"
+                                                                                src="{{ items_images[forloop.index0] }}"
+                                                                                alt="Flannel Shirt"
+                                                                                style="display: block; border: none; object-fit: cover;"
+                                                                                width="130" height="200">
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
 
-                                                    <td class="dw db" width="390" valign="top">
-                                                        <table role="presentation" width="100%" cellspacing="0"
-                                                            cellpadding="0" border="0" align="center">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td class="dw db" align="left">
-                                                                        <h2
-                                                                            style="Margin: 0; color: #1B1715; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: bold; line-height: 28px; text-transform: uppercase; letter-spacing: 2px;">
-                                                                            Plaid Workwear Cloud Flannel
-                                                                        </h2>
-                                                                    </td>
-                                                                </tr>
+                                                        <td class="dw db" width="20" height="20">
+                                                            &nbsp;
+                                                        </td>
 
-                                                                <tr>
-                                                                    <td class="dw db" align="left">
-                                                                        <p
-                                                                            style="Margin: 0; color: #1B1715; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: normal; line-height: 22px;">
-                                                                            Item #: 123456789123 <br>
-                                                                            Style: 1A123456 <br>
-                                                                            Color: BLACK / NATURAL COMBO <br>
-                                                                            Quantity: 1
-                                                                        </p>
+                                                        <td class="dw db" width="390" valign="top">
+                                                            <table role="presentation" width="100%" cellspacing="0"
+                                                                cellpadding="0" border="0" align="center">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td class="dw db" align="left">
+                                                                            <h2
+                                                                                style="Margin: 0; color: #1B1715; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: bold; line-height: 28px; text-transform: uppercase; letter-spacing: 2px;">
+                                                                                {{ items_titles[forloop.index0] }}
+                                                                            </h2>
+                                                                        </td>
+                                                                    </tr>
 
-                                                                        <p
-                                                                            style="Margin: 0; color: #1B1715; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: normal; line-height: 22px; padding-top: 10px;">
-                                                                            Price: $55.65
-                                                                        </p>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <!-- END OF YOUR ITEMS DETAILS -->
+                                                                    <tr>
+                                                                        <td class="dw db" align="left">
+                                                                            <p
+                                                                                style="Margin: 0; color: #1B1715; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: normal; line-height: 22px;">
+                                                                                Item #: {{ items[forloop.index0] }} <br>
+                                                                                Style: {{ items_styles[forloop.index0]
+                                                                                }} <br>
+                                                                                Color: {{ items_colors[forloop.index0]
+                                                                                }} <br>
+                                                                                Quantity: {{
+                                                                                items_quantities[forloop.index0] }}
+                                                                            </p>
+
+                                                                            <p
+                                                                                style="Margin: 0; color: #1B1715; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: normal; line-height: 22px; padding-top: 10px;">
+                                                                                Price: $55.65
+                                                                            </p>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <!-- END OF YOUR ITEMS DETAILS -->
+                                    {% endfor %}
+                                </ul>
 
                                 <!-- START OF BORDER -->
                                 <tr>
@@ -607,7 +613,7 @@
                                                     <td width="30%" align="right">
                                                         <p
                                                             style="Margin: 0; color: #1B1715; font-family: Arial, Helvetica, sans-serif; font-size: 18px; font-weight: bold; line-height: 1; padding-top: 10px; padding-right: 10px;">
-                                                            {{ order.total }}
+                                                            ${{ order.total }}
                                                         </p>
                                                     </td>
                                                 </tr>
@@ -719,6 +725,13 @@
                 </tr>
             </tbody>
         </table>
+
+        <iframe
+            style="display: none !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important;"
+            name="_hjRemoteVarsFrame" title="_hjRemoteVarsFrame" tabindex="-1" aria-hidden="true"
+            id="_hjRemoteVarsFrame" src="assets/box-e031119f9e9e307a08fa610f85dbfb52.html"></iframe><iframe
+            id="_hjSafeContext_5918655" title="_hjSafeContext" tabindex="-1" aria-hidden="true" src="assets/a.html"
+            style="display: none !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important;"></iframe>
         </script>
 
         <div id="result"></div>
@@ -765,15 +778,15 @@
                         billing_zipcode: "93546",
                         billing_country: "USA",
                         payment_type: "Apple Pay",
-                        item_total: 4,
-                        item_ids: "34532, 6543, 8796, 4556",
+                        items_total: 4,
+                        items_ids: "34532, 6543, 8796, 4556",
                         items_titles: "Night Colosseum Joggers, Jordan Retro Runners, Thermal Fiber Socks, Tech Wallet",
                         items_colors: "Black / Blue, Jade / Orange, Black, Platinum",
                         items_styles: "NCJ432112, JRR21234, TFS554433, TW683738",
                         items_page: "https://www.regeliafit.com/joggers/night-collesum/34532, https://www.regeliafit.com/shoes/running/retro/6543, https://www.regeliafit.com/socks/thermal-fiber/8796, https://www.regeliafit.com/wallets/tech/4556",
                         items_images: "https://images.unsplash.com/photo-1552902875-9ac1f9fe0c07?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8am9nZ2Vyc3xlbnwwfHwwfHx8MA%3D%3D, https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D, https://images.unsplash.com/photo-1615486364462-ef6363adbc18?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D, https://images.unsplash.com/photo-1614260937041-bf8d795cf0bd?q=80&w=3088&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                        item_quantities: "1, 2, 3, 1",
-                        item_prices: '99.99, 300.99, 12.98, 55.00',
+                        items_quantities: "1, 2, 3, 1",
+                        items_prices: '99.99, 300.99, 12.98, 55.00',
                         subtotal: "468.96",
                         total: "513.51",
                         shipping_price: "Free",
